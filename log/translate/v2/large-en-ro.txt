@@ -1,0 +1,4 @@
+large-beam-search-8-en-ro: BLEU = 24.26 55.0/30.6/18.5/11.5 (BP = 0.991 ratio = 0.991 hyp_len = 48491 ref_len = 48945)
+large-greedy-en-ro: BLEU = 23.26 53.4/29.2/17.5/10.7 (BP = 1.000 ratio = 1.015 hyp_len = 49657 ref_len = 48945)
+large-top-7-en-ro: BLEU = 23.26 53.4/29.2/17.5/10.7 (BP = 1.000 ratio = 1.015 hyp_len = 49657 ref_len = 48945)
+large-beam-search-4-en-ro: BLEU = 24.22 54.7/30.4/18.3/11.4 (BP = 0.998 ratio = 0.998 hyp_len = 48846 ref_len = 48945)

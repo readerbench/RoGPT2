@@ -1,0 +1,4 @@
+F1 Score for Dev: 0.9867329597473145
+Accuracy for Dev: 0.9866888523101807
+F1 Score for Test: 0.9804571270942688
+Accuracy for Test: 0.9803333282470703

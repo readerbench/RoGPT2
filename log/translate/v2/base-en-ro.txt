@@ -1,0 +1,4 @@
+base-top-7-en-ro: BLEU = 22.31 52.1/28.1/16.7/10.1 (BP = 1.000 ratio = 1.025 hyp_len = 50166 ref_len = 48945)
+base-greedy-en-ro: BLEU = 22.31 52.1/28.1/16.7/10.1 (BP = 1.000 ratio = 1.025 hyp_len = 50166 ref_len = 48945)
+base-beam-search-8-en-ro: BLEU = 23.48 53.8/29.6/17.7/10.8 (BP = 0.998 ratio = 0.998 hyp_len = 48861 ref_len = 48945)
+base-beam-search-4-en-ro: BLEU = 23.32 53.4/29.4/17.6/10.7 (BP = 1.000 ratio = 1.009 hyp_len = 49397 ref_len = 48945)

@@ -1,0 +1,4 @@
+medium-top-7-ro-en: BLEU = 31.45 62.8/37.5/24.7/16.8 (BP = 1.000 ratio = 1.021 hyp_len = 48576 ref_len = 47562)
+medium-beam-search-8-ro-en: BLEU = 32.87 66.5/40.3/26.8/18.4 (BP = 0.968 ratio = 0.969 hyp_len = 46073 ref_len = 47562)
+medium-beam-search-4-ro-en: BLEU = 32.89 65.7/39.8/26.4/18.1 (BP = 0.984 ratio = 0.984 hyp_len = 46791 ref_len = 47562)
+medium-greedy-ro-en: BLEU = 31.45 62.8/37.5/24.7/16.8 (BP = 1.000 ratio = 1.021 hyp_len = 48576 ref_len = 47562)

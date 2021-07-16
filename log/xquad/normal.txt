@@ -1,0 +1,9 @@
+base-beam-search-4: {'exact_match': 24.11764705882353, 'f1': 35.27481850314759}
+base-greedy: {'exact_match': 23.69747899159664, 'f1': 35.970264064383905}
+base-beam-search-8: {'exact_match': 24.11764705882353, 'f1': 35.27481850314759}
+medium-beam-search-4: {'exact_match': 31.596638655462186, 'f1': 45.32667118672392}
+medium-beam-search-8: {'exact_match': 31.596638655462186, 'f1': 45.32667118672392}
+medium-greedy: {'exact_match': 29.66386554621849, 'f1': 44.740962768922714}
+large-beam-search-4: {'exact_match': 29.66386554621849, 'f1': 43.05865381544039}
+large-beam-search-8: {'exact_match': 29.66386554621849, 'f1': 43.05865381544039}
+large-greedy: {'exact_match': 29.747899159663866, 'f1': 42.98861526665083}

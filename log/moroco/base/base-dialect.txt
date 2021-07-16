@@ -1,0 +1,2 @@
+F1 Score for Dev: 0.9675202965736389
+F1 Score for Test: 0.9669987559318542

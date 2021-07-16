@@ -1,0 +1,13 @@
+large-v2-top-7: {'exact_match': 31.34453781512605, 'f1': 44.71327852976019}
+large-v2-greedy: {'exact_match': 31.34453781512605, 'f1': 44.71327852976019}
+large-v2-beam-search-4: {'exact_match': 31.596638655462186, 'f1': 43.532352329176156}
+large-v1-beam-search-8: {'exact_match': 28.73949579831933, 'f1': 39.71153009877786}
+large-v1-top-7: {'exact_match': 28.403361344537814, 'f1': 39.790719779626826}
+base-v1-greedy: {'exact_match': 23.865546218487395, 'f1': 34.27249347982264}
+base-v1-top-7: {'exact_match': 23.865546218487395, 'f1': 34.27249347982264}
+base-v1-beam-search-4: {'exact_match': 25.04201680672269, 'f1': 34.51705084886004}
+base-v1-beam-search-8: {'exact_match': 25.04201680672269, 'f1': 34.51705084886004}
+medium-v1-beam-search-8: {'exact_match': 27.647058823529413, 'f1': 39.11011390158698}
+medium-v1-greedy: {'exact_match': 27.058823529411764, 'f1': 39.75278341376798}
+medium-v1-top-7: {'exact_match': 27.058823529411764, 'f1': 39.75278341376798}
+medium-v1-beam-search-4: {'exact_match': 27.647058823529413, 'f1': 39.11011390158698}
