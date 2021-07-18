@@ -12,8 +12,7 @@ def generate_paragraph():
     with open(path_dataset_test, 'r') as input_file:
         data = json.load(input_file)
 
-
-    example = data[444] # 231
+    example = data[444]  # 231
     title = example['title']
     text = ' '.join(example['text'][:-1])
     true_text = example['text'][-1]
@@ -21,7 +20,7 @@ def generate_paragraph():
 
     inputs_token = tokenizer.encode(inputs_text, return_tensors='tf')
 
-    text_predict = model.generate(inputs_token, max_length=1024,  no_repeat_ngram_size=2)[0][len(inputs_token[0]):]
+    text_predict = model.generate(inputs_token, max_length=1024, no_repeat_ngram_size=2)[0][len(inputs_token[0]):]
 
     output_file = open('out_text_new_7.txt', 'w+')
     print(inputs_text, file=output_file)
@@ -58,4 +57,19 @@ def generate_title():
 
 
 if __name__ == '__main__':
-    generate_paragraph()
+    path_dataset = '../../dataset/digi24/split/test.json'
+    with open(path_dataset, 'r') as input_file:
+        data = json.load(input_file)
+
+    search = [
+        "Poliția Română: 12 tone de articole",
+        "Adrian Năstase ia în calcul",
+        "Victor Ponta: Traian Băsescu se joacă cu"
+    ]
+
+    for i, example in enumerate(data):
+        for s in search:
+            if s in example['title'] or s in ' '.join(example['text']):
+                print(i, s)
+
+    # generate_paragraph()

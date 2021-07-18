@@ -87,7 +87,7 @@ class AccuracyQA(tf.keras.metrics.Metric):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--tpu_name', help='Name for tpu for to run')
+    parser.add_argument('--tpu_name', type=str, required=True, help='Name for tpu for to run')
     args = parser.parse_args()
 
     block_size = 512
@@ -105,13 +105,11 @@ if __name__ == '__main__':
     ds_train = get_dataset_from_recorder(tf.io.gfile.glob(f'{path_ds_train}/*.tfrecord'), block_size)
     ds_dev = get_dataset_from_recorder(tf.io.gfile.glob(f'{path_ds_dev}/*.tfrecord'), block_size)
 
-    #TODO refeactorization
-    #TODO refeactorization
-    #TODO refeactorization
+
     for path_model, info in {
-        '../../models/version2/base': {'batch_size': 144, 'epochs': 15},
-        # '../../models/version2/medium': {'batch_size': 40, 'epochs': 10},
-        # '../../models/version2/large': {'batch_size': 16, 'epochs': 9}
+        '../../../models/base': {'batch_size': 144, 'epochs': 15},
+        '../../../models/medium': {'batch_size': 40, 'epochs': 10},
+        '../../../model/large': {'batch_size': 16, 'epochs': 9}
     }.items():
         name_model = path_model.split('/')[-1]
         ds_train_b = ds_train.shuffle(10_000).repeat().batch(info['batch_size'], drop_remainder=True)
@@ -137,7 +135,7 @@ if __name__ == '__main__':
             callbacks=[early_stop, reduce_lr]
         )
 
-        model.layers[1].save_pretrained(f'model/{name_model}')
+        model.layers[1].save_pretrained(f'../../../model/evaluation/normal/{name_model}')
 
         with open(f'log/{name_model}.txt', 'w+') as output_file:
             for metric, values in history.history.items():

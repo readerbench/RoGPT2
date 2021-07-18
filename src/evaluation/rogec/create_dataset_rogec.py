@@ -107,14 +107,14 @@ def map_features_rogec(features, outputs):
     }
 
 
-#TODO refactor
+
 if __name__ == '__main__':
     select_train()
     data_info = [
         Dataset_Info(
             'dataset/train.json',
-            'tokenizer',
-            'tf-record/train/train_smaller.tfrecord'
+            '../../../model/tokenizer',
+            '../../../tf-record/rogec/train_smaller.tfrecord'
             , 140,
             'train'
         ),
@@ -122,19 +122,19 @@ if __name__ == '__main__':
         Dataset_Info(
             '../../../dataset/train_v2.json',
             '../../../model/tokenizer',
-            'tf-record/train/train_1gb.tfrecord',
+            '../../../tf-record/rogec/train_1gb/train_1gb.tfrecord',
             140,
             'train-v2'
         ),
         Dataset_Info(
             'dataset/dev.json',
-            'tokenizer',
-            'tf-record/dev/dev.tfrecord',
+            '../../../model/tokenizer',
+            '../../../tf-record/rogec/dev.tfrecord',
             140,
             'dev'
         )
     ]
 
     create_dataset_record(
-        create_dataset, write_tf_record_wrapper, data_info, map_features_rogec, 'tf-record/info.json'
+        create_dataset, write_tf_record_wrapper, data_info, map_features_rogec, '../../../tf-record/rogec/info.json'
     )

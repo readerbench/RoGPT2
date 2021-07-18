@@ -2,7 +2,6 @@ import json
 import argparse
 import tensorflow as tf
 from transformers import GPT2Tokenizer
-from threading import Thread
 
 from eval_utils.utils import Dataset_Info, write_tf_record_wrapper, int64_feature_list, create_dataset_record
 
@@ -94,25 +93,14 @@ def map_features_digi24(features, outputs):
 
 
 if __name__ == '__main__':
-    path_file = '/home/mihai/Documents/EvalGPT2/dataset/digi24/split/train.json'
-    path_tokenizer = '/home/mihai/Documents/GPT2Model/tokenizer'
-
-    ds = create_dataset_paragraph(path_file, path_tokenizer, 512)
-    print(f'For paragraph: {ds.cardinality()}')
-
-    ds = create_dataset_title(path_file, path_tokenizer, 512)
-    print(f'For title: {ds.cardinality()}')
-
-
-    """
     parser = argparse.ArgumentParser()
     parser.add_argument('--name_dataset', help='Name of file for dataset')
     args = parser.parse_args()
 
     name_dataset = args.name_dataset
-    path_dataset = f'/home/mihai/Documents/EvalGPT2/dataset/digi24/split/{name_dataset}.json'
-    path_save = '/home/mihai/Documents/EvalGPT2/tf-record/digi24/'
-    path_tokenizer = '/home/mihai/Documents/GPT2Model/tokenizer'
+    path_dataset = f'../../dataset/digi24/split/{name_dataset}.json'
+    path_save = '../../tf-record/digi24/'
+    path_tokenizer = '../../model/tokenizer'
     block_size = 512
 
     data_info_paragraph = [
@@ -126,12 +114,11 @@ if __name__ == '__main__':
     ]
 
     create_dataset_record(
-        create_dataset, write_tf_record_wrapper,  data_info_paragraph, map_features_digi24,
-        '/home/mihai/Documents/EvalGPT2/tf-record/digi24/paragraph/info.json'
+        create_dataset_paragraph, write_tf_record_wrapper,  data_info_paragraph, map_features_digi24,
+        '../../tf-record/digi24/paragraph/info.json'
     )
 
     create_dataset_record(
-        create_dataset, write_tf_record_wrapper, data_info_title, map_features_digi24,
-        '/home/mihai/Documents/EvalGPT2/tf-record/digi24/title/info.json'
+        create_dataset_title, write_tf_record_wrapper, data_info_title, map_features_digi24,
+        '../../tf-record/digi24/title/info.json'
     )
-    """

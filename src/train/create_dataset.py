@@ -16,7 +16,7 @@ def processing_dataset_save(dirs: List[str], tokenizer: GPT2Tokenizer, block_siz
     text_column_name = "text"
 
     """ 
-    This function create local on disk dataset after this is processing using hugging face datasets
+    This function create local, on disk, dataset after this is processing using hugging face datasets
     """
 
     def tokenize_function(examples):

@@ -2,7 +2,7 @@ import json
 from transformers import GPT2Tokenizer
 
 if __name__ == '__main__':
-    path_dataset = '/home/mihai/Documents/EvalGPT2/dataset/xquad/test_unpacked.json'
+    path_dataset = '../../../dataset/xquad/test.json'
 
     len_tokens = {}
     max_len = 0

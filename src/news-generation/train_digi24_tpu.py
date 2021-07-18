@@ -92,9 +92,9 @@ def run(strategy, path_model: str, block_size: int, batch_size: int, epochs: int
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--path_model', help='Path where is model')
-    parser.add_argument('--tpu_name', help='Name for tpu for to run')
-    parser.add_argument('--batch_size', help='Batch size')
+    parser.add_argument('--path_model', type=str, required=True, help='Path or name of model')
+    parser.add_argument('--tpu_name', type=str, required=True, help='Name of tpu')
+    parser.add_argument('--batch_size', type=int, required=True, help='Batch size')
     args = parser.parse_args()
 
     block_size = 512

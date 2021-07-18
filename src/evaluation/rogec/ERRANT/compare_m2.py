@@ -28,12 +28,11 @@ def extractEdits(sent, args):
 		cat = edit[1]
 		cor = edit[2]
 		cor_len = len(cor.split())
-		#TODO remove
+
 		try:
 			coder = int(edit[-1])
 		except Exception as e:
 			print(edit)
-			print("grhfewfsd")
 			print(sent)
 			print(e)
 		# Save coder in dict

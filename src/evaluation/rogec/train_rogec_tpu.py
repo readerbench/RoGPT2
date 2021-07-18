@@ -38,7 +38,7 @@ def get_model(pre_trained_gpt2: str, block_size: int, batch_size: int) -> tf.ker
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--tpu_name', type=str, help='Name for tpu for to run', required=True)
+    parser.add_argument('--tpu_name', type=str, help='Name of TPU for training', required=True)
     parser.add_argument('--total_size_train', type=int, required=True)
 
     args = parser.parse_args()

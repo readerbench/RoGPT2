@@ -15,8 +15,8 @@ def map_features_xquad(features, output):
 
 
 def unpack_dataset():
-    path_raw_dataset = '/home/mihai/Documents/EvalGPT2/dataset/xquad/xquad.ro.json'
-    path_unpack_dataset = '/home/mihai/Documents/EvalGPT2/dataset/xquad/test_unpacked.json'
+    path_raw_dataset = '../../../dataset/xquad/xquad.ro.json'
+    path_unpack_dataset = '../../../dataset/xquad/test.json'
     examples = []
 
     with open(path_raw_dataset, 'r+') as input_files:
@@ -39,54 +39,6 @@ def unpack_dataset():
 
     with open(path_unpack_dataset, 'w+') as output_file:
         json.dump(examples, output_file, ensure_ascii=False, indent=4)
-
-
-def split_dataset():
-    path_merge = '/home/mihai/Documents/EvalGPT2/dataset/xquad/unpacked.json'
-    path_ids_train = '/home/mihai/Documents/EvalGPT2/dataset/xquad/reper/train.json'
-    path_ids_dev = '/home/mihai/Documents/EvalGPT2/dataset/xquad/reper/dev.json'
-    path_ids_test = '/home/mihai/Documents/EvalGPT2/dataset/xquad/reper/test.json'
-    path_dataset = '/home/mihai/Documents/EvalGPT2/dataset/xquad/'
-
-    ids_train = []
-    ids_validation = []
-    ids_test = []
-
-    questions_train = {}
-    questions_test = {}
-    questions_dev = {}
-
-    data_ids = json.load(open(path_ids_train, 'r'))
-    for i in range(len(data_ids['data'])):
-        for j in range(len(data_ids['data'][i]['paragraphs'])):
-            for k in range(len(data_ids['data'][i]['paragraphs'][j]['qas'])):
-                ids_train.append(data_ids['data'][i]['paragraphs'][j]['qas'][k]['id'])
-
-    data_ids = json.load(open(path_ids_dev, 'r'))
-    for i in range(len(data_ids['data'])):
-        for j in range(len(data_ids['data'][i]['paragraphs'])):
-            for k in range(len(data_ids['data'][i]['paragraphs'][j]['qas'])):
-                ids_validation.append(data_ids['data'][i]['paragraphs'][j]['qas'][k]['id'])
-
-    data_ids = json.load(open(path_ids_test, 'r'))
-    ids_test = data_ids.keys()
-
-    with open(path_merge, 'r') as input_file:
-        questions = json.load(input_file)
-
-        for k, v in questions.items():
-            if k in ids_train:
-                questions_train[k] = v
-            elif k in ids_test:
-                questions_test[k] = v
-            elif k in ids_validation:
-                questions_dev[k] = v
-            else:
-                print("Error!", k)
-
-    json.dump(questions_train, open(f'{path_dataset}train.json', 'w+'), ensure_ascii=False, indent=4)
-    json.dump(questions_dev, open(f'{path_dataset}dev.json', 'w+'), ensure_ascii=False, indent=4)
-    json.dump(questions_test, open(f'{path_dataset}test.json', 'w+'), ensure_ascii=False, indent=4)
 
 
 def get_dataset(path_to_file: str, path_to_tokenizer: str, block_size: int) -> tf.data.Dataset:
@@ -117,8 +69,8 @@ def get_dataset(path_to_file: str, path_to_tokenizer: str, block_size: int) -> t
 
 
 def split_train_dev():
-    path_dataset_train = '/home/mihai/Documents/EvalGPT2/dataset/xquad/train_unpacked.json'
-    tokenizer = GPT2Tokenizer.from_pretrained('/home/mihai/Documents/GPT2Model/tokenizer')
+    path_dataset_train = '../../../dataset/xquad/train-v1.1.json'
+    tokenizer = GPT2Tokenizer.from_pretrained('../../../model/tokenizer')
     examples = []
 
     with open(path_dataset_train, 'r') as input_file:
@@ -136,7 +88,7 @@ def split_train_dev():
     train, dev = train_test_split(examples, test_size=0.1, random_state=42)
 
     for partition in ['train', 'dev']:
-        with open(f'/home/mihai/Documents/EvalGPT2/dataset/xquad/split/{partition}.json', 'w+') as output:
+        with open(f'../../../dataset/xquad/split/{partition}.json', 'w+') as output:
             json.dump(dev if partition == 'dev' else train, output, ensure_ascii=False, indent=4)
 
 
@@ -147,18 +99,22 @@ if __name__ == '__main__':
 
     data_info = [
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/xquad/split/train.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/xquad/train/train.tfrecord', block_size, 'train'
+            '../../../dataset/xquad/split/train.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/xquad/train/train.tfrecord',
+            block_size,
+            'train'
         ),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/xquad/split/dev.json', '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/xquad/dev/dev.tfrecord', block_size, 'dev'
+            '../../../dataset/xquad/split/dev.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/xquad/dev/dev.tfrecord',
+            block_size, 'dev'
         )
     ]
 
     create_dataset_record(
         get_dataset, write_tf_record_wrapper, data_info, map_features_xquad,
-        '/home/mihai/Documents/EvalGPT2/tf-record/xquad/info.json'
+        '../../../tf-record/xquad/info.json'
     )

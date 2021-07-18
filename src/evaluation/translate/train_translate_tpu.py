@@ -94,12 +94,12 @@ def loss_translate(y_true: tf.Tensor, y_pred: tf.Tensor, padding_ids: int = 5030
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--mode', type=str, required=True, help='Mode for translation: en-ro or ro-en')
-    parser.add_argument('--tpu_name', type=str, required=True, help='Tpu name for training')
+    parser.add_argument('--tpu_name', type=str, required=True, help='Name of Tpu for training')
     parser.add_argument('--strategy', type=str, required=True, help='v1 or v2')
 
     args = parser.parse_args()
 
-    path_tokenizer = '../../models/tokenizer'
+    path_tokenizer = '../../../model/tokenizer'
     block_size = 250
     mode = args.mode
     tpu_name = args.tpu_name

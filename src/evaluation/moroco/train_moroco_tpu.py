@@ -221,7 +221,7 @@ def run_task(tpu_strategy, block_size: int, task: str):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--tpu_name', help='Tpu name for training')
+    parser.add_argument('--tpu_name', type=str, required=True, help='Name of tpu for training')
     args = parser.parse_args()
 
     block_size = 275

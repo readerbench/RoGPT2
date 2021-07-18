@@ -7,7 +7,7 @@ from eval_utils import map_features_binary, map_features_multi_class, Dataset_In
     create_dataset_record
 
 
-def get_dataset(path_dataset: str, path_tokenizer: str, block_size: int, name_label: str):
+def create_dataset_moroco(path_dataset: str, path_tokenizer: str, block_size: int, name_label: str):
     tokenizer = GPT2Tokenizer.from_pretrained(path_tokenizer)
     inputs = []
     labels = []
@@ -35,69 +35,69 @@ if __name__ == '__main__':
 
     data_info_all = [
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/moroco/json/train/merge_all.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/moroco/dialect/train.tfrecord',
+            '../../../dataset/moroco/json/train/merge_all.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/moroco/dialect/train.tfrecord',
             block_size,
             'train'),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/moroco/json/dev/merge_all.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/moroco/dialect/dev.tfrecord',
+            '../../../dataset/moroco/json/dev/merge_all.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/moroco/dialect/dev.tfrecord',
             block_size,
             'dev'),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/moroco/json/test/merge_all.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/moroco/dialect/test.tfrecord',
+            '../../../dataset/moroco/json/test/merge_all.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/moroco/dialect/test.tfrecord',
             block_size,
             'test')
     ]
 
     data_info_ro = [
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/moroco/json/train/romanian.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/moroco/ro/train.tfrecord',
+            '../../../dataset/moroco/json/train/romanian.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/moroco/ro/train.tfrecord',
             block_size,
             'train'),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/moroco/json/dev/romanian.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/moroco/ro/dev.tfrecord',
+            '../../../dataset/moroco/json/dev/romanian.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/moroco/ro/dev.tfrecord',
             block_size,
             'dev'),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/moroco/json/test/romanian.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/moroco/ro/test.tfrecord',
+            '../../../dataset/moroco/json/test/romanian.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/moroco/ro/test.tfrecord',
             block_size,
             'test')
     ]
 
     data_info_md = [
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/moroco/json/train/moldavian.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/moroco/md/train.tfrecord',
+            '../../../dataset/moroco/json/train/moldavian.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/moroco/md/train.tfrecord',
             block_size,
             'train'),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/moroco/json/dev/moldavian.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/moroco/md/dev.tfrecord',
+            '../../../dataset/moroco/json/dev/moldavian.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/moroco/md/dev.tfrecord',
             block_size,
             'dev'),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/moroco/json/test/moldavian.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/moroco/md/test.tfrecord',
+            '../../../dataset/moroco/json/test/moldavian.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/moroco/md/test.tfrecord',
             block_size,
             'test')
     ]
@@ -105,16 +105,16 @@ if __name__ == '__main__':
     """
     create_dataset_record(
         lambda x, y, z: create_dataset_moroco(x, y, z, name_label='dialect'), write_tf_record_wrapper, data_info_all,
-        map_features_binary, '/home/mihai/Documents/EvalGPT2/tf-record/moroco/dialect/info.json'
+        map_features_binary, '../../../tf-record/moroco/dialect/info.json'
     )
     """
 
     create_dataset_record(
         lambda x, y, z: create_dataset_moroco(x, y, z, name_label='category'), write_tf_record_wrapper, data_info_ro,
-        map_features_multi_class, '/home/mihai/Documents/EvalGPT2/tf-record/moroco/ro/info.json'
+        map_features_multi_class, '../../../tf-record/moroco/ro/info.json'
     )
 
     create_dataset_record(
         lambda x, y, z: create_dataset_moroco(x, y, z, name_label='category'), write_tf_record_wrapper, data_info_md,
-        map_features_multi_class, '/home/mihai/Documents/EvalGPT2/tf-record/moroco/md/info.json'
+        map_features_multi_class, '../../../tf-record/moroco/md/info.json'
     )

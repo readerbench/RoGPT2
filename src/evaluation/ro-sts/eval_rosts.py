@@ -6,8 +6,6 @@ from transformers import GPT2Tokenizer, TFAutoModel
 from scipy.stats.stats import pearsonr
 from scipy.stats import spearmanr
 
-from typing import List
-
 
 def create_dataset(path_file: str, name_model: str, block_size: int, batch_size: int) -> tf.data.Dataset:
     sentences_1 = []
@@ -80,7 +78,7 @@ def _eval_model(model: tf.keras.models.Model, ds: tf.data.Dataset):
 
     for x, y in ds:
         predict = model(x)
-        values += [float(i) for i in list(y.numpy())]  # in case of error use this i[0] :)
+        values += [float(i) for i in list(y.numpy())]
         predicts += list(predict.numpy())
 
     return spearmanr(predicts, values)[0], pearsonr(predicts, values)[0]

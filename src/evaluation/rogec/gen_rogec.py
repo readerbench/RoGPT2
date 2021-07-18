@@ -43,10 +43,15 @@ def gen_rogec(path_models: List[str], path_file_test: str, path_tokenizer: str, 
 if __name__ == '__main__':
     configs_gen = {
         'greedy': {},
-        # 'beam-search-4': {'num_beams': 4, 'early_stopping': True},
-        # 'beam-search-8': {'num_beams': 8, 'early_stopping': True}
+        'beam-search-4': {'num_beams': 4, 'early_stopping': True},
+        'beam-search-8': {'num_beams': 8, 'early_stopping': True}
     }
-    path = 'tokenizer'
-    model = ['model/large']  # 'model/large', 'model/medium',
+    path = '../../../model/tokenizer'
+    model = ['../../../model/evaluation/rogec/smaller-dataset/base',
+                 '../../../model/evaluation/rogec/smaller-dataset/medium',
+                 '../../../model/evaluation/rogec/smaller-dataset/large']
+    model_1gb = ['../../../model/evaluation/rogec/1gb-dataset/base',
+        '../../../model/evaluation/rogec/1gb-dataset/medium', '../../../model/evaluation/rogec/1gb-dataset/large']
 
-    gen_rogec(model, 'dataset/test.json', path, 'generate', configs_gen)
+    gen_rogec(model, '../../../dataset/rogec/selectect/test.json', path, '../../../log/rogec/smaller-dataset', configs_gen)
+    gen_rogec(model_1gb, '../../../dataset/rogec/selectect/test.json', path, '../../../log/rogec/1gb-dataset', configs_gen)

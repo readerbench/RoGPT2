@@ -59,11 +59,11 @@ def map_features_ro_sts(features, output):
 
 
 if __name__ == '__main__':
-    block_size = 512
+    block_size = 64
 
-    data_info = []
+    data_info = [] # add your info for dataset
 
     create_dataset_record(
         create_dataset_ro_sts, write_tf_record_wrapper, data_info, map_features_ro_sts,
-        f'tf-record/ro-sts/ro-sts/info.json'
+        f'../../../tf-record/ro-sts/info.json'
     )

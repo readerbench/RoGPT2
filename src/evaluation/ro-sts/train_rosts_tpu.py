@@ -64,7 +64,8 @@ class CosineSimilarity(tf.keras.layers.Layer):
 
 def get_dataset_from_recorder(path_local: List[str], batch_size: int, block_size: int, drop=True):
     raw_dataset = tf.data.TFRecordDataset(path_local)
-    block_size = 512
+
+
     feature_description = {
         "sentence1": tf.io.FixedLenFeature([block_size], tf.int64, default_value=[0] * block_size),
         "sentence2": tf.io.FixedLenFeature([block_size], tf.int64, default_value=[0] * block_size),
@@ -77,7 +78,7 @@ def get_dataset_from_recorder(path_local: List[str], batch_size: int, block_size
         example = tf.io.parse_single_example(example_proto, feature_description)
         inputs = {
             'sentence1': example['sentence1'], 'sentence2': example['sentence2'],
-            'attention_mask1': example['attention_mask1'], 'attention_mask2': example['attention_mask2']
+            #'attention_mask1': example['attention_mask1'], 'attention_mask2': example['attention_mask2']
         }
 
         return inputs, example['similarity']
@@ -139,7 +140,7 @@ def eval_model(model: tf.keras.models.Model, ds: tf.data.Dataset):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--tpu_name', help='Tpu name for training')
+    parser.add_argument('--tpu_name', type=str, required=True, help='Name of tpu for training')
     args = parser.parse_args()
 
     block_size = 64 # best results for block size equal with 64 and without attention mask

@@ -5,61 +5,68 @@ import string
 import re
 import json
 
+from typing import Callable, List
+
 import spacy
 
 nlp = spacy.load('ro_core_news_lg', disable=["tagger", "attribute_ruler", "tok2vec", "ner"])
 
 
-def normalize_answer(s):
+def normalize_answer(s: str) -> str:
     """Lower text and remove punctuation, articles and extra whitespace and for romanian language lemmatisation"""
 
-    def lemma(text):
+    def lemma(text: str) -> str:
         my_doc = nlp(text)
 
         return ' '.join([token.lemma_ for token in my_doc])
 
-    def remove_articles(text):
+    def remove_articles(text: str) -> str:
         return re.sub(r'\b(a|an|the|un|o)\b', ' ', text)
 
-    def white_space_fix(text):
+    def white_space_fix(text: str) -> str:
         return ' '.join(text.split())
 
-    def remove_punc(text):
+    def remove_punc(text: str) -> str:
         exclude = set(string.punctuation)
         return ''.join(ch for ch in text if ch not in exclude)
 
-    def lower(text):
+    def lower(text: str) -> str:
         return text.lower()
 
     return lemma(white_space_fix(remove_articles(remove_punc(lower(s)))))
 
 
-def f1_score(prediction, ground_truth):
+def f1_score(prediction: str, ground_truth: str) -> float:
     prediction_tokens = normalize_answer(prediction).split()
     ground_truth_tokens = normalize_answer(ground_truth).split()
     common = Counter(prediction_tokens) & Counter(ground_truth_tokens)
     num_same = sum(common.values())
+
     if num_same == 0:
         return 0
+
     precision = 1.0 * num_same / len(prediction_tokens)
     recall = 1.0 * num_same / len(ground_truth_tokens)
     f1 = (2 * precision * recall) / (precision + recall)
+
     return f1
 
 
-def exact_match_score(prediction, ground_truth):
+def exact_match_score(prediction: str, ground_truth: str) -> bool:
     return (normalize_answer(prediction) == normalize_answer(ground_truth))
 
 
-def metric_max_over_ground_truths(metric_fn, prediction, ground_truths):
+def metric_max_over_ground_truths(metric_fn: Callable, prediction: str, ground_truths: List[str]) -> float:
     scores_for_ground_truths = []
+
     for ground_truth in ground_truths:
         score = metric_fn(prediction, ground_truth)
         scores_for_ground_truths.append(score)
+
     return max(scores_for_ground_truths)
 
 
-def evaluate(dir_generate):
+def evaluate(dir_generate: str) -> None:
     type_model = dir_generate.split('/')[-1]
     results = {}
 

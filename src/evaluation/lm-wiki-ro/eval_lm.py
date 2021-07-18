@@ -23,8 +23,6 @@ def get_dataset(path_dataset: str, path_tokenizer: str, block_size: int, batch_s
 
     with open(path_dataset, 'r') as input_file:
         data = input_file.read()
-        # import re
-        # data = re.sub(r'\n+', '\n', data)
         tokens = tokenizer.encode(data)
         len_tokens = len(tokens)
 
@@ -49,10 +47,11 @@ if __name__ == '__main__':
     model = get_model('../../../model/models/base', block_size, 1)
     model.compile(loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True))
 
-    output = model.evaluate(ds_dev)
-    print("PPL dev:", math.exp(output))
-    output = model.evaluate(ds_test)
-    print("PPL test:", math.exp(output))
+    loss_dev = model.evaluate(ds_dev)
+    loss_test = model.evaluate(ds_test)
+
+    print("PPL dev:", math.exp(loss_dev))
+    print("PPL test:", math.exp(loss_test))
 
     # with open(path_test, 'r') as input_file:
     #     data = input_file.read()

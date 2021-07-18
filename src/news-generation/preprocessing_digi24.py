@@ -117,17 +117,18 @@ def split_train(path_train_file: str, path_save_dir: str, split_nums: int):
 
 
 if __name__ == '__main__':
-    pass
-    # clean_dataset(
-    #     '/home/mihai/Documents/EvalGPT2/dataset/digi24/original/',
-    #     '/home/mihai/Documents/EvalGPT2/dataset/digi24/original/'
-    # )
-
-    # split_dataset(
-    #     '/home/mihai/Documents/EvalGPT2/dataset/digi24/original/', '/home/mihai/Documents/EvalGPT2/dataset/digi24/split'
-    # )
-
-    split_train(
-        '/home/mihai/Documents/EvalGPT2/dataset/digi24/split/train.json',
-        '/home/mihai/Documents/EvalGPT2/dataset/digi24/split/split-train/', 20
+    clean_dataset(
+        '../../dataset/digi24/original/',
+        '../../dataset/digi24/original/'
     )
+
+    split_dataset(
+        '../../dataset/digi24/original/', '../../dataset/digi24/split'
+    )
+
+    """
+    split_train(
+        '../../dataset/digi24/split/train.json',
+        '../../dataset/digi24/split/split-train/', 20
+    )
+    """

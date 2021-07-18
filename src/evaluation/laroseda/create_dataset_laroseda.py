@@ -7,7 +7,7 @@ from eval_utils import map_features_binary, map_features_multi_class, Dataset_In
     create_dataset_record
 
 
-def get_dataset(path_dataset: str, path_tokenizer: str, block_size: int, task: str):
+def create_dataset_laroseda(path_dataset: str, path_tokenizer: str, block_size: int, task: str):
     tokenizer = GPT2Tokenizer.from_pretrained(path_tokenizer)
     inputs = []
     labels = []
@@ -33,30 +33,30 @@ def get_dataset(path_dataset: str, path_tokenizer: str, block_size: int, task: s
 
 
 if __name__ == '__main__':
-    path_dataset = '/home/mihai/Documents/EvalGPT2/dataset/LaRoSeDa/tf-record/'
+    path_dataset = '../../../dataset/LaRoSeDa/tf-record/'
     block_size = 128
 
     data_info_binary = [
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/LaRoSeDa/split/train.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/LaRoSeDa/binary/train.tfrecord',
+            '../../../dataset/laroseda/split/train.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/laroseda/binary/train.tfrecord',
             block_size,
             'train'
         ),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/LaRoSeDa/split/dev.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/LaRoSeDa/binary/dev.tfrecord',
+            '../../../dataset/laroseda/split/dev.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/laroseda/binary/dev.tfrecord',
             block_size,
             'dev'
         ),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/LaRoSeDa/split/test.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/LaRoSeDa/binary/test.tfrecord',
+            '../../../dataset/laroseda/split/test.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/laroseda/binary/test.tfrecord',
             block_size,
             'test'
         )
@@ -64,25 +64,25 @@ if __name__ == '__main__':
 
     data_info_multi = [
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/LaRoSeDa/split/train.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/LaRoSeDa/multi-class/train.tfrecord',
+            '../../../dataset/laroseda/split/train.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/laroseda/multi-class/train.tfrecord',
             block_size,
             'train'
         ),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/LaRoSeDa/split/dev.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/LaRoSeDa/multi-class/dev.tfrecord',
+            '../../../dataset/laroseda/split/dev.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/laroseda/multi-class/dev.tfrecord',
             block_size,
             'dev'
         ),
 
         Dataset_Info(
-            '/home/mihai/Documents/EvalGPT2/dataset/LaRoSeDa/split/test.json',
-            '/home/mihai/Documents/GPT2Model/tokenizer',
-            '/home/mihai/Documents/EvalGPT2/tf-record/LaRoSeDa/multi-class/test.tfrecord',
+            '../../../dataset/laroseda/split/test.json',
+            '../../../model/tokenizer',
+            '../../../tf-record/laroseda/multi-class/test.tfrecord',
             block_size,
             'test'
         )
@@ -90,12 +90,11 @@ if __name__ == '__main__':
 
     create_dataset_record(
         lambda x, y, z: create_dataset_laroseda(x, y, z, task='binary'), write_tf_record_wrapper, data_info_binary,
-        map_features_binary, '/home/mihai/Documents/EvalGPT2/tf-record/LaRoSeDa/binary/info.json'
+        map_features_binary, '../../../tf-record/laroseda/binary/info.json'
     )
 
-    """
+
     create_dataset_record(
             lambda x, y, z: create_dataset_laroseda(x, y, z, task='multi'), write_tf_record_wrapper, data_info_multi,
-            map_features_multi_class, '/home/mihai/Documents/EvalGPT2/tf-record/LaRoSeDa/multi-class/info.json'
+            map_features_multi_class, '../../../tf-record/laroseda/multi-class/info.json'
     )
-    """
