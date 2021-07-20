@@ -180,3 +180,9 @@ The downstream models can be found at the [link](https://nextcloud.readerbench.c
 
 ---
 Research supported with [Cloud TPUs](https://cloud.google.com/tpu/) from Google's [TensorFlow Research Cloud (TFRC)](https://www.tensorflow.org/tfrc)
+
+## How to cite
+
+---
+
+Niculescu, M. A., Ruseti, S., and Dascalu, M. (submitted). RoGPT2: Romanian GPT2 for Text Generation
