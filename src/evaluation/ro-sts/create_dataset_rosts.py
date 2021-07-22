@@ -61,7 +61,22 @@ def map_features_ro_sts(features, output):
 if __name__ == '__main__':
     block_size = 64
 
-    data_info = [] # add your info for dataset
+    data_info = [
+        Dataset_Info(
+            '../../../dataset/ro-sts/raw/RO-STS.train.tsv',
+            '../../../model/tokenizer',
+            '../../../tf-record/ro-sts/train/train.tfrecord',
+            block_size, 'train'
+        ),
+
+        Dataset_Info(
+            '../../../dataset/ro-sts/raw/RO-STS.dev.tsv',
+            '../../../model/tokenizer',
+            '../../../tf-record/ro-sts/dev/dev.tfrecord',
+            block_size, 'dev'
+        )
+    ]
+
 
     create_dataset_record(
         create_dataset_ro_sts, write_tf_record_wrapper, data_info, map_features_ro_sts,

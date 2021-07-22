@@ -24,7 +24,7 @@ This is the Romanian language version of the GPT2 model. There are 3 trained ver
 
 ### Training Statistics
 
-| Version | Number of parameters | Number of epoch | Duration of an epoch | Block size | Batch size | PPL |
+| Version | Number of parameters | Number of epoch | Duration of an epoch | Context size | Batch size | PPL |
 |:-------:|:--------------------:|:---------------:|:--------------------:|:----------:|:----------:|:---:|
 | Base   | 124M | 15 | 7h      | 1024 | 72 | 22.96    |
 | Medium | 354M | 10 | 22h     | 1024 | 24 | 17.64    |
@@ -115,8 +115,8 @@ The downstream models can be found at the [link](https://nextcloud.readerbench.c
 |RoBERT-small  | -             | 30.84 | 45.17    |
 |RoBERT-base   | -             | 53.52 | 70.04    |
 |RoBERT-large  | -             | 55.46 |  69.64   |
-|mBERT         | -             | 72.7  | 59.9     |
-|XLM-R Large   | -             |**83.6**|**69.7**|
+|mBERT         | -             | 59.9  |  72.7    |
+|XLM-R Large   | -             |**69.7**| **83.6**|
 |RoGPT2-base   |  Greedy       | 23.69 | 35.97    |
 |RoGPT2-base   | Beam-search-4 | 24.11 | 35.27    |
 |RoGPT2-medium | Greedy        | 29.66 | 44.74    |
