@@ -185,4 +185,4 @@ Research supported with [Cloud TPUs](https://cloud.google.com/tpu/) from Google'
 
 ---
 
-Niculescu, M. A., Ruseti, S., and Dascalu, M. (submitted). RoGPT2: Romanian GPT2 for Text Generation
+Niculescu, M. A., Ruseti, S., and Dascalu, M. (accepted). RoGPT2: Romanian GPT2 for Text Generation, ICTAI 2021
