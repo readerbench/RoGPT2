@@ -186,10 +186,10 @@ Research supported with [Cloud TPUs](https://cloud.google.com/tpu/) from Google'
 ---
 
 @inproceedings{niculescu2021rogpt2, <br>
-  title={RoGPT2: Romanian GPT2 for Text Generation}, <br>
-  author={Niculescu, Mihai Alexandru and Ruseti, Stefan and Dascalu, Mihai}, <br>
-  booktitle={2021 IEEE 33rd International Conference on Tools with Artificial Intelligence (ICTAI)}, <br>
-  pages={1154--1161}, <br>
-  year={2021}, <br>
-  organization={IEEE} <br>
+&emsp; title={RoGPT2: Romanian GPT2 for Text Generation}, <br>
+&emsp; author={Niculescu, Mihai Alexandru and Ruseti, Stefan and Dascalu, Mihai}, <br>
+&emsp; booktitle={2021 IEEE 33rd International Conference on Tools with Artificial Intelligence (ICTAI)}, <br>
+&emsp; pages={1154--1161}, <br>
+&emsp; year={2021}, <br>
+&emsp; organization={IEEE} <br>
 }
