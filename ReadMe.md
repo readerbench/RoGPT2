@@ -185,4 +185,11 @@ Research supported with [Cloud TPUs](https://cloud.google.com/tpu/) from Google'
 
 ---
 
-Niculescu, M. A., Ruseti, S., and Dascalu, M. (accepted). RoGPT2: Romanian GPT2 for Text Generation, ICTAI 2021
+@inproceedings{niculescu2021rogpt2,
+  title={RoGPT2: Romanian GPT2 for Text Generation},
+  author={Niculescu, Mihai Alexandru and Ruseti, Stefan and Dascalu, Mihai},
+  booktitle={2021 IEEE 33rd International Conference on Tools with Artificial Intelligence (ICTAI)},
+  pages={1154--1161},
+  year={2021},
+  organization={IEEE}
+}
