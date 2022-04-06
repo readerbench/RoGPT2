@@ -77,7 +77,7 @@ nest-asyncio==1.5.1
 networkx==2.5.1
 neuralcoref @ file:///tmp/tmpx28yyhbc/neuralcoref
 nltk==3.6.2
-notebook==6.4.1
+notebook==6.4.10
 numexpr==2.7.3
 numpy==1.19.5
 oauthlib==3.1.1
