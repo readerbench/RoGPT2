@@ -40,7 +40,7 @@ gensim==4.0.1
 google-auth==1.32.0
 google-auth-oauthlib==0.4.4
 google-pasta==0.2.0
-grpcio==1.32.0
+grpcio==1.53.0
 h5py==2.10.0
 html5lib==1.1
 huggingface-hub==0.0.12
