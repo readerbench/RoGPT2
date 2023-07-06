@@ -131,7 +131,7 @@ s3transfer==0.4.2
 sacrebleu==1.5.1
 sacremoses==0.0.45
 scikit-learn==0.24.2
-scipy==1.7.0
+scipy==1.10.0
 Send2Trash==1.7.1
 sentence-splitter==1.4
 six==1.15.0
