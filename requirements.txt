@@ -107,7 +107,7 @@ pyasn1==0.4.8
 pyasn1-modules==0.2.8
 pycparser==2.20
 pydantic==1.7.4
-Pygments==2.9.0
+Pygments==2.15.0
 pyLDAvis==3.2.2
 pymorphy2==0.9.1
 pymorphy2-dicts-ru==2.4.417127.4579844
